@@ -3,11 +3,11 @@ import "./style.css";
 import TableHead from "../TableHead";
 import TableBody from "../TableBody";
 
-function Table() {
+function Table(props) {
   return ( 
     <table className="table table-dark table-striped">
       <TableHead />
-      <TableBody />
+      <TableBody userData={props.userData} />
     </table>
   );
 }

@@ -4,22 +4,22 @@ import Table from "./components/Table"
 import './App.css';
 
 function App() {
-  const [employeeState, setEmployeeState] = useState({
-
-  });
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     API.getEmployees(20).then((res) => {
-      console.log(res);
+      // console.log(res.data.results);
+      setUsers(res.data.results)
     })
   }, []);
 
+ 
   return (
     <div className="container">
       <br></br>
       <div className="card" >
         <h1>Helo</h1>
-        <Table />
+        <Table userData={users} />
       </div>
       
     </div>

@@ -1,27 +1,26 @@
 import React from "react";
 // import "./style.css";
 
-function TableBody() {
+function TableBody(props) {
+  const elements = props.userData;
+
+  const tableRows = [];
+  elements.forEach(value => {
+    tableRows.push(
+      <tr>
+        <th scope="row"><img src={value.picture.medium}></img></th>
+        <td>{value.name.first} {value.name.last}</td>
+        <td>{value.dob.date}</td>
+        <td>{value.email}</td>
+        <td>{value.phone}</td>
+        <td>{value.registered.date}</td>
+      </tr>
+    )
+  });
+  
   return ( 
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
+      {tableRows}
     </tbody>
   );
 }
