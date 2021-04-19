@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import API from "./utils/API"
+import Table from "./components/Table"
 import './App.css';
 
 function App() {
@@ -14,12 +15,13 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Employee Directory
-        </p>
-      </header>
+    <div className="container">
+      <br></br>
+      <div className="card" >
+        <h1>Helo</h1>
+        <Table />
+      </div>
+      
     </div>
   );
 }
