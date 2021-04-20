@@ -1,26 +1,31 @@
 import React from "react";
-// import "./style.css";
+import "./style.css";
 
 function TableBody(props) {
   const elements = props.userData;
 
-  const tableRows = [];
-  elements.forEach(value => {
-    tableRows.push(
-      <tr>
-        <th scope="row"><img src={value.picture.medium}></img></th>
-        <td>{value.name.first} {value.name.last}</td>
-        <td>{value.dob.date}</td>
-        <td>{value.email}</td>
-        <td>{value.phone}</td>
-        <td>{value.registered.date}</td>
-      </tr>
-    )
-  });
-  
+  const dateConverter = (date) => {
+    const newDate = new Date(date);
+    const yyyy = newDate.getFullYear();
+    const mm = newDate.getMonth()+1;
+    const dd = newDate.getDate();
+
+    const result = `${yyyy}-${mm}-${dd}`;
+    return result
+  }
+
   return ( 
     <tbody>
-      {tableRows}
+      {elements.map((item, index) => (
+        <tr key={index}>
+          <th scope="row"><img className="avatar" src={item.picture.medium} alt="avatar" /></th>
+          <td>{item.name.first} {item.name.last}</td>
+          <td>{dateConverter(item.dob.date)}</td>
+          <td>{item.email}</td>
+          <td>{item.phone}</td>
+          <td>{dateConverter(item.registered.date)}</td>
+        </tr>
+      ))}
     </tbody>
   );
 }
