@@ -3,6 +3,56 @@
   width: 100%;
 } */
 
-.table {
+table {
   margin-bottom: 0 !important;
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		position: relative;
+    left: 128px;
+	}
+	
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 12px;
+		left: -116px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+
+  .avatar {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 5% !important;
+  }
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Name";}
+	td:nth-of-type(2):before { content: "Date of Birth"; }
+	td:nth-of-type(3):before { content: "Email"; }
+	td:nth-of-type(4):before { content: "Contact Number"; }
+	td:nth-of-type(5):before { content: "Registere Date"; }
 }

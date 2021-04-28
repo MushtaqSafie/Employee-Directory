@@ -16,7 +16,7 @@ function Filter(props) {
         onChange={props.handleFilterValue}
         name="filter"
         type="text"
-        placeholder="search for value... "
+        placeholder="search for... "
         id="search"
       />
       <button type="submit" className="btn btn-primary">Search</button>
