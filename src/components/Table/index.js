@@ -5,7 +5,7 @@ import TableBody from "../TableBody";
 
 function Table(props) {
   return ( 
-    <table className="table table-dark table-striped">
+    <table className="table  table-striped">
       <TableHead />
       <TableBody userData={props.userData} />
     </table>

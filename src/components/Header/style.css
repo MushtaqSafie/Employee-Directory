@@ -1,0 +1,22 @@
+form label {
+  font-size: 15px;
+  padding: 0 10px;
+}
+
+form select {
+  height: 25px;
+  border: dimgrey 1px dotted;
+}
+
+form input {
+  height: 25px;
+  border: none;
+}
+
+form button {
+  height: 25px;
+  font-weight: 200;
+  padding: 0 15px !important;
+  margin: 0 10px !important;
+  border-radius: 15px !important;
+}
