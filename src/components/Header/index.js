@@ -6,15 +6,14 @@ function Header(props) {
     <form className="form-inline" onSubmit={props.handleFormSubmit}>
       <label>Filter by</label>
       <select name="filter-field" aria-controls="table" onChange={props.handleFilterChange}>
-          <option value="Name">Name</option>
-          <option value="Email">Email</option>
-          <option value="DOB">DOB</option>
-          <option value="Contact-number">Contact number</option>
-          <option value="Registere-date">Registered Date</option>
+          <option value="name">Name</option>
+          <option value="email">Email</option>
+          <option value="phone">Contact number</option>
       </select>
 
       <label>include:</label>
       <input 
+        onChange={props.handleFilterValue}
         name="filter"
         type="text"
         placeholder="search for value... "
