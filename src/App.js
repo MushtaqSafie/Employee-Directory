@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import API from "./utils/API"
 import Table from "./components/Table"
-import Header from "./components/Header"
+import Filter from "./components/Filter"
 import './App.css';
 
 
@@ -9,56 +9,62 @@ function App() {
   const [initUsers, setInitUsers] = useState([]);
   const [users, setUsers] = useState([]);
   
-  const [filterField, setFilterField] = useState("Name")
-  const [filterValue, setFilter] = useState("");
+  const [filterField, setFilterField] = useState("name")
+  const [filterValue, setFilterValue] = useState("");
 
   useEffect(() => {
     API.getEmployees(20).then((res) => {   
-      setInitUsers(res.data.results);
-      setUsers(res.data.results);
+      let data = res.data.results
+      let result = [];
+      data.forEach(item => {
+        const obj = {
+          name: item.name.first +" "+ item.name.last,
+          email: item.email,
+          dob: item.dob.date,
+          phone: item.phone,
+          picture: item.picture.medium,
+          registeredDate: item.registered.date
+        }
+        result.push(obj);
+      });
+      setInitUsers(result);
+      setUsers(result);
     })
   }, []);
 
-  const handleFilterChange = (event) => {
-    // const name = event.target.name;
-    const value = event.target.value;
-    console.log("value", value);
-    setFilter(value)
-
+  const handleFilterChange = (e) =>  setFilterField(e.target.value);
+  const handleFilterValue = (e) =>  setFilterValue(e.target.value);
+  const handleFilterReset = () => setUsers(initUsers);
+  
+  const handleFilterSubmit = (e) => {
+    e.preventDefault();
+    const value = filterValue.toLowerCase();
     const newUser = initUsers.filter((items) => {
-      return items.name.first.includes(filterValue)
+      switch (filterField) {
+        case "name":
+          let nameStr = items.name.toLowerCase();
+          return nameStr.includes(value) 
+        case "email":
+          let emailStr = items.email.toLowerCase();
+          return emailStr.includes(value)
+        case "phone":
+          let phoneStr = items.phone.toLowerCase();
+          return phoneStr.includes(value)
+        default:
+          break;
+      }
     });
     setUsers(newUser);
-
-    console.log(users);
-
-
-    // users.forEach(item => {
-    //   console.log(item);
-    //   item.name.first = "mushtaq";
-    //   item.name.last = "safie";
-    //   newUser.push(item);
-    // });
- 
-    // console.log(users);
-    // const result = users.filter(name => name.)
-    // setUsers([])
   };
   
-  // When the form is submitted, search the Giphy API for `this.state.search`
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    console.log("helo");
-    // this.searchGiphy(this.state.search);
-  };
-  
-
   return (
     <div className="container" style={{padding: "15px"}}>
       <div className="card" >
-        <Header 
-          handleFormSubmit={handleFormSubmit}
+        <Filter 
+          handleFilterSubmit={handleFilterSubmit}
           handleFilterChange={handleFilterChange}
+          handleFilterValue={handleFilterValue}
+          handleFilterReset={handleFilterReset}
         />
         <Table userData={users} />
       </div>

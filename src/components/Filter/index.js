@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.css";
 
-function Header(props) {
+function Filter(props) {
   return ( 
-    <form className="form-inline" onSubmit={props.handleFormSubmit} style={{margin: "10px"}}>
+    <form className="form-inline" onSubmit={props.handleFilterSubmit} style={{margin: "10px"}}>
       <label>Filter by</label>
       <select name="filter-field" aria-controls="table" onChange={props.handleFilterChange}>
           <option value="name">Name</option>
@@ -26,6 +26,6 @@ function Header(props) {
   );
 }
 
-export default Header;
+export default Filter;
 
 
