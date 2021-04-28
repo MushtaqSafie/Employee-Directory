@@ -7,7 +7,7 @@ function Table(props) {
   return ( 
     <table className="table  table-striped">
       <TableHead />
-      <TableBody userData={props.userData} />
+      <TableBody userData={props.userData} sortField={props.sortField} />
     </table>
   );
 }

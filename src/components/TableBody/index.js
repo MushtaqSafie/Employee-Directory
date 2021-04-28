@@ -10,6 +10,28 @@ function TableBody(props) {
     return result
   }
 
+  if (props.sortField) {
+    switch (props.sortField) {
+      case "name":
+        elements.sort((a, b) => (a.name > b.name) ? 1 : -1);
+        break;
+      case "email":
+        elements.sort((a, b) => (a.email > b.email) ? 1 : -1);
+        break;
+      case "phone":
+        elements.sort((a, b) => (a.phone > b.phone) ? 1 : -1);
+        break;
+      case "dob":
+        elements.sort((a, b) => (a.dob > b.dob) ? 1 : -1);
+        break;
+      case "registered":
+        elements.sort((a, b) => (a.registeredDate > b.registeredDate) ? 1 : -1);
+        break;
+      default:
+        break;
+    }
+  }
+
   return ( 
     <tbody>
       {elements.map((item, index) => (
