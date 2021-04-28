@@ -2,15 +2,16 @@ import { useEffect, useState } from 'react';
 import API from "./utils/API"
 import Table from "./components/Table"
 import Filter from "./components/Filter"
+import Sort from "./components/Sort"
 import './App.css';
 
 
 function App() {
   const [initUsers, setInitUsers] = useState([]);
   const [users, setUsers] = useState([]);
-  
   const [filterField, setFilterField] = useState("name")
   const [filterValue, setFilterValue] = useState("");
+  const [sortField, setSortField] = useState("");
 
   useEffect(() => {
     API.getEmployees(20).then((res) => {   
@@ -32,13 +33,11 @@ function App() {
     })
   }, []);
 
-  const handleFilterChange = (e) =>  setFilterField(e.target.value);
-  const handleFilterValue = (e) =>  setFilterValue(e.target.value);
-  const handleFilterReset = () => setUsers(initUsers);
   
   const handleFilterSubmit = (e) => {
     e.preventDefault();
     const value = filterValue.toLowerCase();
+    // eslint-disable-next-line
     const newUser = initUsers.filter((items) => {
       switch (filterField) {
         case "name":
@@ -56,17 +55,22 @@ function App() {
     });
     setUsers(newUser);
   };
-  
+
   return (
     <div className="container" style={{padding: "15px"}}>
-      <div className="card" >
+      <div className="card " >
+        <div className="card-header">
+        <Sort 
+          handleSortChange={(e) => setSortField(e.target.value)}
+          />
         <Filter 
           handleFilterSubmit={handleFilterSubmit}
-          handleFilterChange={handleFilterChange}
-          handleFilterValue={handleFilterValue}
-          handleFilterReset={handleFilterReset}
-        />
-        <Table userData={users} />
+          handleFilterChange={(e) => setFilterField(e.target.value)}
+          handleFilterValue={(e) => setFilterValue(e.target.value)}
+          handleFilterReset={() => setUsers(initUsers)}
+          />
+        </div>
+        <Table userData={users} sortField={sortField} />
       </div>
       
     </div>
