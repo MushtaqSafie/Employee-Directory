@@ -12,6 +12,7 @@ function App() {
   const [filterField, setFilterField] = useState("name")
   const [filterValue, setFilterValue] = useState("");
   const [sortField, setSortField] = useState("");
+  const [sortOrder, setSortOrder] = useState(-1);
 
   useEffect(() => {
     API.getEmployees(20).then((res) => {   
@@ -56,12 +57,26 @@ function App() {
     setUsers(newUser);
   };
 
+  const handleSortOrder = (e) => {
+    e.preventDefault();
+    if (sortOrder === 1) {
+      setSortOrder(-1)
+    } else {
+      setSortOrder(1)
+    }
+  }
+  const handleSortChange = (e) => {
+    setSortField(e.target.value);
+  }
+
   return (
     <div className="container" style={{padding: "15px"}}>
       <div className="card " >
         <div className="card-header">
         <Sort 
-          handleSortChange={(e) => setSortField(e.target.value)}
+          handleSortChange={handleSortChange}
+          handleSortOrder={handleSortOrder}
+          sortOrder={sortOrder}
           />
         <Filter 
           handleFilterSubmit={handleFilterSubmit}
@@ -70,7 +85,7 @@ function App() {
           handleFilterReset={() => setUsers(initUsers)}
           />
         </div>
-        <Table userData={users} sortField={sortField} />
+        <Table userData={users} sortField={sortField} sortOrder={sortOrder} />
       </div>
       
     </div>

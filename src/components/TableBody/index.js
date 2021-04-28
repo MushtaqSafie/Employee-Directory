@@ -11,21 +11,22 @@ function TableBody(props) {
   }
 
   if (props.sortField) {
+    console.log();
     switch (props.sortField) {
       case "name":
-        elements.sort((a, b) => (a.name > b.name) ? 1 : -1);
+        elements.sort((a, b) => (a.name > b.name) ? props.sortOrder : -1*props.sortOrder);
         break;
       case "email":
-        elements.sort((a, b) => (a.email > b.email) ? 1 : -1);
+        elements.sort((a, b) => (a.email > b.email) ? props.sortOrder : -1*props.sortOrder);
         break;
       case "phone":
-        elements.sort((a, b) => (a.phone > b.phone) ? 1 : -1);
+        elements.sort((a, b) => (a.phone > b.phone) ? props.sortOrder : -1*props.sortOrder);
         break;
       case "dob":
-        elements.sort((a, b) => (a.dob > b.dob) ? 1 : -1);
+        elements.sort((a, b) => (a.dob > b.dob) ? props.sortOrder : -1*props.sortOrder);
         break;
       case "registered":
-        elements.sort((a, b) => (a.registeredDate > b.registeredDate) ? 1 : -1);
+        elements.sort((a, b) => (a.registeredDate > b.registeredDate) ? props.sortOrder : -1*props.sortOrder);
         break;
       default:
         break;
