@@ -3,6 +3,7 @@ import API from "./utils/API"
 import Table from "./components/Table"
 import Filter from "./components/Filter"
 import Sort from "./components/Sort"
+import logo from "./img/logo.png"
 import './App.css';
 
 
@@ -73,6 +74,7 @@ function App() {
     <div className="container" style={{padding: "15px"}}>
       <div className="card " >
         <div className="card-header">
+        <img src={logo} alt="logo" className="logo col-8 center"/>
         <Sort 
           handleSortChange={handleSortChange}
           handleSortOrder={handleSortOrder}

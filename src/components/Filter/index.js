@@ -1,11 +1,12 @@
 import React from "react";
+import { HiFilter } from "react-icons/hi";
 import "./style.css";
 
 function Filter(props) {
   return ( 
     <form className="form-inline" onSubmit={props.handleFilterSubmit} style={{margin: "10px"}}>
-      <label>Filter by</label>
-      <select name="filter-field" aria-controls="table" onChange={props.handleFilterChange}>
+      <label><HiFilter/>Filter by</label>
+      <select name="filter-field" className="col-sm-4 col-lg-2" aria-controls="table" onChange={props.handleFilterChange}>
           <option value="name">Name</option>
           <option value="email">Email</option>
           <option value="phone">Contact number</option>
@@ -19,8 +20,8 @@ function Filter(props) {
         placeholder="search for... "
         id="search"
       />
-      <button type="submit" className="btn btn-primary">Search</button>
-      <button type="button" className="btn btn-danger" onClick={props.handleFilterReset}>Reset</button>
+      <button type="submit" className="btn btn-primary col-sm-4 col-md-4 col-lg-2">Search</button>
+      <button type="button" className="btn btn-danger col-sm-4 col-md-4 col-lg-2" onClick={props.handleFilterReset}>Reset</button>
     </form>
 
   );

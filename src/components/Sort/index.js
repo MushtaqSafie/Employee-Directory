@@ -1,12 +1,13 @@
 import React from "react";
 import { RiArrowUpDownFill } from "react-icons/ri";
+import { TiArrowUnsorted } from "react-icons/ti";
 import "./style.css";
 
 function Sort(props) {
   return ( 
     <form className="form-inline" style={{margin: "10px"}}>
-      <label>Sort by: </label>
-      <select name="filter-field" aria-controls="table" onChange={props.handleSortChange}>
+      <label><TiArrowUnsorted />Sort by: </label>
+      <select name="filter-field" className="col-sm-4 col-lg-2" aria-controls="table" onChange={props.handleSortChange}>
           <option value="">Select Sort Field</option>
           <option value="name">Name</option>
           <option value="dob">Date of Birth</option>
