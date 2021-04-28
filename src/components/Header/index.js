@@ -3,7 +3,7 @@ import "./style.css";
 
 function Header(props) {
   return ( 
-    <form className="form-inline" onSubmit={props.handleFormSubmit}>
+    <form className="form-inline" onSubmit={props.handleFormSubmit} style={{margin: "10px"}}>
       <label>Filter by</label>
       <select name="filter-field" aria-controls="table" onChange={props.handleFilterChange}>
           <option value="name">Name</option>
@@ -20,6 +20,7 @@ function Header(props) {
         id="search"
       />
       <button type="submit" className="btn btn-primary">Search</button>
+      <button type="button" className="btn btn-danger" onClick={props.handleFilterReset}>Reset</button>
     </form>
 
   );
