@@ -5,12 +5,8 @@ function TableBody(props) {
   const elements = props.userData;
 
   const dateConverter = (date) => {
-    const newDate = new Date(date);
-    const yyyy = newDate.getFullYear();
-    const mm = newDate.getMonth()+1;
-    const dd = newDate.getDate();
-
-    const result = `${yyyy}-${mm}-${dd}`;
+    const d = new Date(date);
+    const result = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
     return result
   }
 
@@ -18,12 +14,12 @@ function TableBody(props) {
     <tbody>
       {elements.map((item, index) => (
         <tr key={index}>
-          <th scope="row"><img className="avatar" src={item.picture.medium} alt="avatar" /></th>
-          <td>{item.name.first} {item.name.last}</td>
-          <td>{dateConverter(item.dob.date)}</td>
+          <th scope="row"><img className="avatar" src={item.picture} alt="avatar" /></th>
+          <td>{item.name}</td>
+          <td>{dateConverter(item.dob)}</td>
           <td>{item.email}</td>
           <td>{item.phone}</td>
-          <td>{dateConverter(item.registered.date)}</td>
+          <td>{dateConverter(item.registeredDate)}</td>
         </tr>
       ))}
     </tbody>
