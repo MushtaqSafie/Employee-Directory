@@ -27,8 +27,8 @@ Employee directory is an application build in React. The user can view entire em
 * react-icons
 
 ## ScreenShot
-![ScreenShot1](http://url/to/img.png)
-![ScreenShot2](http://url/to/img.png)
+![ScreenShot1](https://raw.githubusercontent.com/MushtaqSafie/Employee-Directory/main/media/1.JPG)
+![ScreenShot2](https://raw.githubusercontent.com/MushtaqSafie/Employee-Directory/main/media/2.JPG)
 
 ## Questions
 **My GitHub Profile**: [MushtaqSafie](https://github.com/MushtaqSafie)
